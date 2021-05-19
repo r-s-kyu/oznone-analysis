@@ -13,16 +13,29 @@ from matplotlib import font_manager
 from matplotlib.font_manager import FontProperties
 
 
+print("input year")
+year=input()
+print("input month")
+month=input()
+print("input day")
+day=input()
+
+if(len(month)==1):
+    month = "0" + month
+if(len(day)==1):
+    day = "0" + day
+
 # Webページからファイル読み込み（ここではbytes列で読み込まれている）
-file='https://ozonewatch.gsfc.nasa.gov/data/omi/Y2020/L3_ozone_omi_20200920.txt'
+file='https://ozonewatch.gsfc.nasa.gov/data/omi/Y' + year +'/L3_ozone_omi_' + year + month + day + '.txt'
+print(file)
 
 f = urllib.request.urlopen(file)         
    
-# # ファイルの日付を読み取る
-date_regex = re.compile(r'(\d){8}') #日付け抽出のオブジェクト作成
-date_mo = date_regex.search(file) #ファイルの名前から日にちの部分を抽出
-date_str = date_mo.group()
-date_num = [date_str[0:4], date_str[4:6], date_str[6:8]] # year,month,dayに分別
+# # # ファイルの日付を読み取る
+# date_regex = re.compile(r'(\d){8}') #日付け抽出のオブジェクト作成
+# date_mo = date_regex.search(file) #ファイルの名前から日にちの部分を抽出
+# date_str = date_mo.group()
+# date_num = [date_str[0:4], date_str[4:6], date_str[6:8]] # year,month,dayに分別
 
 ozone_data = [[]*360]*180
 int_data = [[]*360]*180
@@ -104,7 +117,7 @@ CF = ax.contourf(cyclic_lon,lat,cyclic_data, transform=ccrs.PlateCarree(),
 #
 plt.colorbar(CF, orientation="horizontal")
 ax.coastlines()
-ax.set_title(date_num[0] + "年" + date_num[1] + "月" + date_num[2] + "日", fontproperties = fp_1)
+ax.set_title( year + "年" + month + "月" + day + "日", fontproperties = fp_1)
 plt.show()
 
 
