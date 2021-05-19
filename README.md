@@ -1,2 +1,2 @@
-# oznone-analysis
+# ozone-analysis
 オゾンデータ分析
