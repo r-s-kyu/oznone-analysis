@@ -12,18 +12,13 @@ from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
 from matplotlib import font_manager
 from matplotlib.font_manager import FontProperties
 
-
+# 変数に日付（文字列）を代入[月、日は0埋め]
 print("input year")
 year=input()
 print("input month")
-month=input()
+month=input().zfill(2)
 print("input day")
-day=input()
-
-if(len(month)==1):
-    month = "0" + month
-if(len(day)==1):
-    day = "0" + day
+day=input().zfill(2)
 
 # Webページからファイル読み込み（ここではbytes列で読み込まれている）
 file='https://ozonewatch.gsfc.nasa.gov/data/omi/Y' + year +'/L3_ozone_omi_' + year + month + day + '.txt'
