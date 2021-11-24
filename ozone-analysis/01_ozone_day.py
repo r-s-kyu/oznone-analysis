@@ -1,4 +1,4 @@
-
+# %%
 import re
 import numpy as np 
 import matplotlib.pyplot as plt
@@ -25,7 +25,7 @@ file='https://ozonewatch.gsfc.nasa.gov/data/omi/Y' + year +'/L3_ozone_omi_' + ye
 print(file)
 
 f = urllib.request.urlopen(file)         
-   
+
 # # # ファイルの日付を読み取る
 # date_regex = re.compile(r'(\d){8}') #日付け抽出のオブジェクト作成
 # date_mo = date_regex.search(file) #ファイルの名前から日にちの部分を抽出
